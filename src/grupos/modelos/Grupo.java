@@ -7,4 +7,25 @@ public class Grupo {
     void mostrar(){
 
     }
+
+    public Grupo(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    public String verNombre() {
+        return nombre;
+    }
+
+    public void asignarNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
+
+    public void asignarDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
