@@ -4,8 +4,8 @@ public class Grupo {
     private String nombre;
     private String descripcion;
 
-    void mostrar(){
-
+    public void mostrar(){
+        System.out.printf("\t%s (%s)\n", nombre, descripcion);
     }
 
     public Grupo(String nombre, String descripcion) {

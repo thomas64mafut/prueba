@@ -3,6 +3,11 @@ package tipos.modelos;
 public class Tipo {
     private String nombre;
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public void mostrarTipo(){
         System.out.println(this.nombre);
     }

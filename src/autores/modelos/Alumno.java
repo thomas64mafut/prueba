@@ -1,16 +1,19 @@
 package autores.modelos;
 
 public class Alumno {
+    //Declaracion de variables
     private int dni;
     private String apellidos;
     private String nombres;
     private String clave;
     private String cx;
 
-    void mostrar(){
-
+    // Metodos
+    public void mostrar(){
+        System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cx);
     }
 
+    // Objeto
     public Alumno(int dni, String apellidos, String nombres, String clave, String cx) {
         this.dni = dni;
         this.apellidos = apellidos;
@@ -19,6 +22,7 @@ public class Alumno {
         this.cx = cx;
     }
 
+    //Getters & Setters
     public int verDni() {
         return dni;
     }

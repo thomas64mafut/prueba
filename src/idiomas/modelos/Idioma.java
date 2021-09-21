@@ -3,6 +3,11 @@ package idiomas.modelos;
 public class Idioma {
     private String nombre;
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public void mostrarIdioma(){
         System.out.println(this.nombre);
     }
@@ -18,4 +23,6 @@ public class Idioma {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
+
+
 }

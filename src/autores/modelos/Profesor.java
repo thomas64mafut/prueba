@@ -7,9 +7,9 @@ public class Profesor {
     private String clave;
     private String cargo;
 
-    void mostrar(){
-
-    }
+   public void mostrar(){
+       System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cargo);
+   }
 
     public Profesor(int dni, String apellidos, String nombres, String clave, String cargo) {
         this.dni = dni;
