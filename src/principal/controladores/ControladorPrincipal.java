@@ -29,8 +29,13 @@ public class ControladorPrincipal {
         grupos.add(new Grupo("Prog II - 1", "Orientado a Java"));
 
         idiomas.add(new Idioma("Español"));
+        idiomas.add(new Idioma("Ingles"));
+
         lugares.add(new Lugar("FACET - UNT"));
+
         tipos.add(new Tipo ("Ensayo"));
+
+        palabrasClaves.add(new PalabraClave("Programando"));
 
         //Printeos
         System.out.println("Datos del Alumno: ");
@@ -53,19 +58,26 @@ public class ControladorPrincipal {
 
         System.out.println("Idiomas: ");
         for (Idioma unIdioma : idiomas  ){
-            System.out.printf("\t %s",unIdioma.toString());
+            System.out.printf("\t %s\n",unIdioma.toString());
         }
         System.out.println("");
 
         System.out.println("Lugares: ");
         for (Lugar unLugar : lugares){
-            System.out.printf("\t %s",unLugar.toString());
+            System.out.printf("\t %s\n",unLugar.toString());
         }
         System.out.println("");
 
         System.out.println("Tipos: ");
         for (Tipo unTipo : tipos){
-            System.out.printf("\t %s",unTipo.toString());
+            System.out.printf("\t %s\n",unTipo.toString());
         }
+        System.out.println("");
+
+        System.out.println("Palabras Claves: ");
+        for (PalabraClave unaPalabraClave : palabrasClaves){
+            System.out.printf("\t %s\n",unaPalabraClave.toString());
+        }
+        System.out.println("");
     }
 }

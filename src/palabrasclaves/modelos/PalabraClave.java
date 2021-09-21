@@ -3,6 +3,11 @@ package palabrasclaves.modelos;
 public class PalabraClave {
     private String nombre;
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public void mostrarPalabraClave(){
         System.out.println(this.nombre);
     }
