@@ -9,6 +9,7 @@ import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import palabrasclaves.modelos.PalabraClave;
+import tipos.modelos.Tipo;
 
 public class VentanaAPalabraClave extends JDialog {
    ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
@@ -85,6 +86,11 @@ public class VentanaAPalabraClave extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+        String nombre = this.txtNombre.getText().trim();
+        PalabraClave palabraclave = new PalabraClave(nombre);
+        this.palabrasClaves.add(palabraclave);
+        for(PalabraClave i : this.palabrasClaves)
+            System.out.println(i);
         
     }//GEN-LAST:event_btnGuardarClic
 
