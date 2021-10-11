@@ -5,13 +5,13 @@ public class Profesor {
     private String apellidos;
     private String nombres;
     private String clave;
-    private String cargo;
+    private Cargo cargo;
 
    public void mostrar(){
        System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cargo);
    }
 
-    public Profesor(int dni, String apellidos, String nombres, String clave, String cargo) {
+    public Profesor(int dni, String apellidos, String nombres, String clave, Cargo cargo) {
         this.dni = dni;
         this.apellidos = apellidos;
         this.nombres = nombres;
@@ -52,10 +52,10 @@ public class Profesor {
     }
 
     public String verCargo() {
-        return cargo;
+        return cargo.toString();
     }
 
-    public void asignarCargo(String cargo) {
+    public void asignarCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 }
