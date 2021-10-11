@@ -21,4 +21,16 @@ public class Publicacion {
     private Lugar lugarPublicacion;
     private Idioma idiomaPublicacion;
     private Tipo tipoPublicacion;
+
+    public Publicacion(String titulo, LocalDate fechaPublicacion, String enlace, String resumen, ArrayList<PalabraClave> palabrasClaves, MiembroEnGrupo autor, Lugar lugarPublicacion, Idioma idiomaPublicacion, Tipo tipoPublicacion) {
+        this.titulo = titulo;
+        this.fechaPublicacion = fechaPublicacion;
+        this.enlace = enlace;
+        this.resumen = resumen;
+        this.palabrasClaves = palabrasClaves;
+        this.autor = autor;
+        this.lugarPublicacion = lugarPublicacion;
+        this.idiomaPublicacion = idiomaPublicacion;
+        this.tipoPublicacion = tipoPublicacion;
+    }
 }
