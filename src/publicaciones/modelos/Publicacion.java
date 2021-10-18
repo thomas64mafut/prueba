@@ -14,8 +14,6 @@ public class Publicacion {
     private LocalDate fechaPublicacion;
     private String enlace;
     private String resumen;
-
-
     private ArrayList<PalabraClave> palabrasClaves;
     private MiembroEnGrupo autor;
     private Lugar lugarPublicacion;
@@ -32,5 +30,22 @@ public class Publicacion {
         this.lugarPublicacion = lugarPublicacion;
         this.idiomaPublicacion = idiomaPublicacion;
         this.tipoPublicacion = tipoPublicacion;
+    }
+
+    void mostrar(){
+        System.out.println("Titulo: " + this.titulo);
+        System.out.println("Autor: " + this.autor.verProfesor().verApellidos() + ", " + this.autor.verProfesor().verNombres());
+        System.out.println("Grupo: " + this.autor.verGrupo().verNombre());
+        System.out.println("Fecha de Publicacion: " + this.fechaPublicacion);
+        System.out.println("Tipo: " + this.tipoPublicacion);
+        System.out.println("Idioma: " + this.idiomaPublicacion);
+        System.out.println("Lugar: " + this.lugarPublicacion);
+        System.out.println("Palabras Claves");
+        System.out.println("---------------");
+        for (PalabraClave palabraClave : palabrasClaves){
+            System.out.println("\t" + palabraClave);
+        }
+        System.out.println("Enlace: " + this.enlace);
+        System.out.println("Resumen: " + this.resumen);
     }
 }
