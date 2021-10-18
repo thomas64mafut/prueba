@@ -5,6 +5,7 @@
  */
 package autores.vistas;
 
+import autores.modelos.Alumno;
 import autores.modelos.Cargo;
 import autores.modelos.ModeloComboCargos;
 import autores.modelos.Profesor;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 
 public class VentanaAMProfesor extends JDialog {
+    ArrayList<Profesor> profesores = new ArrayList<>();
     /**
      * Constructor
      * @param ventanaPadre ventana padre
@@ -149,7 +151,10 @@ public class VentanaAMProfesor extends JDialog {
         String clave = new String(this.passClave.getPassword());
         Cargo cargo = ((ModeloComboCargos) this.comboCargos.getModel()).obtenerCargo();
         Profesor profesor = new Profesor(dni, apellidos, nombres, clave, cargo);
-        profesor.mostrar();
+        this.profesores.add(profesor);
+        System.out.println("-- Profesores --");
+        for(Profesor prof : this.profesores)
+            prof.mostrar();
     }//GEN-LAST:event_btnGuardarClic
 
     private void comboCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargosActionPerformed
