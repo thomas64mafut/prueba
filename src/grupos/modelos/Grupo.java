@@ -1,8 +1,13 @@
 package grupos.modelos;
 
+import java.util.ArrayList;
+
 public class Grupo {
     private String nombre;
     private String descripcion;
+
+    private ArrayList<MiembroEnGrupo> miembroengrupos;
+
 
     public void mostrar(){
         System.out.printf("\t%s (%s)\n", nombre, descripcion);

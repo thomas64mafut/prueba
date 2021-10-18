@@ -1,5 +1,9 @@
 package autores.modelos;
 
+import grupos.modelos.MiembroEnGrupo;
+
+import java.util.ArrayList;
+
 public class Profesor {
     private int dni;
     private String apellidos;
@@ -7,7 +11,10 @@ public class Profesor {
     private String clave;
     private Cargo cargo;
 
-   public void mostrar(){
+    private ArrayList<MiembroEnGrupo> miembroengrupos;
+
+
+    public void mostrar(){
        System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cargo);
    }
 

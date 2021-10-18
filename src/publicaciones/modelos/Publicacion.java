@@ -16,7 +16,7 @@ public class Publicacion {
     private String resumen;
 
 
-    private ArrayList<PalabraClave> palabrasClaves = new ArrayList<>();
+    private ArrayList<PalabraClave> palabrasClaves;
     private MiembroEnGrupo autor;
     private Lugar lugarPublicacion;
     private Idioma idiomaPublicacion;

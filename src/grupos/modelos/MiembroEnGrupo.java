@@ -14,4 +14,28 @@ public class MiembroEnGrupo {
         this.rol = rol;
         this.grupo = grupo;
     }
+
+    public Profesor verProfesor() {
+        return profesor;
+    }
+
+    public void asignarProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public Rol verRol() {
+        return rol;
+    }
+
+    public void asignarRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Grupo verGrupo() {
+        return grupo;
+    }
+
+    public void asignarGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
 }
