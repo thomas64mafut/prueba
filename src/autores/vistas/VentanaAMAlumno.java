@@ -70,6 +70,8 @@ public class VentanaAMAlumno extends JDialog {
 
         txtDNI.setToolTipText("Documento del profesor");
 
+        txtCX.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         jLabel6.setText("Clave:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

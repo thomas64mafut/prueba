@@ -15,8 +15,12 @@ public class Profesor {
 
 
     public void mostrar(){
-       System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cargo);
-   }
+        System.out.println("Nombres: "+ nombres);
+        System.out.println("Apellidos: "+ apellidos);
+        System.out.println("DNI: "+ dni);
+        System.out.println("Cargo: "+ cargo.toString());
+        System.out.println("Clave: "+ clave);
+    }
 
     public Profesor(int dni, String apellidos, String nombres, String clave, Cargo cargo) {
         this.dni = dni;

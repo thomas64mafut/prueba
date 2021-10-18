@@ -10,7 +10,12 @@ public class Alumno {
 
     // Metodos
     public void mostrar(){
-        System.out.printf("\t%s, %s - %d - %s - %s \n", apellidos, nombres, dni, clave, cx);
+        System.out.println("Alumno");
+        System.out.println("Nombres: "+ nombres);
+        System.out.println("Apellidos: "+ apellidos);
+        System.out.println("DNI: "+ dni);
+        System.out.println("CX: "+ cx);
+        System.out.println("Clave: "+ clave);
     }
 
     // Objeto
