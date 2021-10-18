@@ -8,31 +8,32 @@ import tipos.modelos.Tipo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Publicacion {
     private String titulo;
+    private MiembroEnGrupo autor;
     private LocalDate fechaPublicacion;
+    private Tipo tipoPublicacion;
+    private Idioma idiomaPublicacion;
+    private Lugar lugarPublicacion;
+    private ArrayList<PalabraClave> palabrasClaves;
     private String enlace;
     private String resumen;
-    private ArrayList<PalabraClave> palabrasClaves;
-    private MiembroEnGrupo autor;
-    private Lugar lugarPublicacion;
-    private Idioma idiomaPublicacion;
-    private Tipo tipoPublicacion;
 
-    public Publicacion(String titulo, LocalDate fechaPublicacion, String enlace, String resumen, ArrayList<PalabraClave> palabrasClaves, MiembroEnGrupo autor, Lugar lugarPublicacion, Idioma idiomaPublicacion, Tipo tipoPublicacion) {
+    public Publicacion(String titulo, MiembroEnGrupo autor, LocalDate fechaPublicacion, Tipo tipoPublicacion, Idioma idiomaPublicacion, Lugar lugarPublicacion, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
         this.titulo = titulo;
+        this.autor = autor;
         this.fechaPublicacion = fechaPublicacion;
+        this.tipoPublicacion = tipoPublicacion;
+        this.idiomaPublicacion = idiomaPublicacion;
+        this.lugarPublicacion = lugarPublicacion;
+        this.palabrasClaves = palabrasClaves;
         this.enlace = enlace;
         this.resumen = resumen;
-        this.palabrasClaves = palabrasClaves;
-        this.autor = autor;
-        this.lugarPublicacion = lugarPublicacion;
-        this.idiomaPublicacion = idiomaPublicacion;
-        this.tipoPublicacion = tipoPublicacion;
     }
 
-    void mostrar(){
+    public void mostrar(){
         System.out.println("Titulo: " + this.titulo);
         System.out.println("Autor: " + this.autor.verProfesor().verApellidos() + ", " + this.autor.verProfesor().verNombres());
         System.out.println("Grupo: " + this.autor.verGrupo().verNombre());
