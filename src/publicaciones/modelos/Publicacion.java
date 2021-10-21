@@ -8,7 +8,6 @@ import tipos.modelos.Tipo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Publicacion {
@@ -62,7 +61,7 @@ public class Publicacion {
 
     public void mostrar(){
         System.out.println("Titulo: " + this.titulo);
-        System.out.println("Autor: " + this.autor.verProfesor().verApellidos() + ", " + this.autor.verProfesor().verNombres());
+        System.out.println("Autor: " + this.autor.verAutor().verApellidos() + ", " + this.autor.verAutor().verNombres());
         System.out.println("Grupo: " + this.autor.verGrupo().verNombre());
         System.out.println("Fecha de Publicacion: " + this.fechaPublicacion);
         System.out.println("Tipo: " + this.tipoPublicacion);

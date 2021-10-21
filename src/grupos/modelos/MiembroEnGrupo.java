@@ -1,28 +1,53 @@
 package grupos.modelos;
 
+import autores.modelos.Autor;
 import autores.modelos.Profesor;
-
-import java.time.LocalDate;
+import java.util.Objects;
 
 public class MiembroEnGrupo {
-    private Profesor profesor;
+    private Autor autor;
     private Grupo grupo;
     private Rol rol;
 
 
-    public MiembroEnGrupo(Profesor profesor, Rol rol, Grupo grupo) {
-        this.profesor = profesor;
+    public MiembroEnGrupo(Autor autor, Rol rol, Grupo grupo) {
+        this.autor = autor;
         this.grupo = grupo;
         this.rol = rol;
-
     }
 
-    public Profesor verProfesor() {
-        return profesor;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.autor);
+        return hash;
     }
 
-    public void asignarProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MiembroEnGrupo other = (MiembroEnGrupo) obj;
+        if (!Objects.equals(this.autor, other.autor)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    public Autor verAutor() {
+        return autor;
+    }
+
+    public void asignarAutor(Autor autor) {
+        this.autor = autor;
     }
 
     public Rol verRol() {
