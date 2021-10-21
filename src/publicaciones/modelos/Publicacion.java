@@ -9,6 +9,7 @@ import tipos.modelos.Tipo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Publicacion {
     private String titulo;
@@ -20,6 +21,32 @@ public class Publicacion {
     private ArrayList<PalabraClave> palabrasClaves;
     private String enlace;
     private String resumen;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.titulo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Publicacion other = (Publicacion) obj;
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
+        return true;
+    }
+
 
     public Publicacion(String titulo, MiembroEnGrupo autor, LocalDate fechaPublicacion, Tipo tipoPublicacion, Idioma idiomaPublicacion, Lugar lugarPublicacion, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
         this.titulo = titulo;

@@ -13,6 +13,30 @@ public class Profesor {
 
     private ArrayList<MiembroEnGrupo> miembroengrupos;
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + this.dni;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Profesor other = (Profesor) obj;
+        if (this.dni != other.dni) {
+            return false;
+        }
+        return true;
+    }
 
     public void mostrar(){
         System.out.println("Nombres: "+ nombres);
