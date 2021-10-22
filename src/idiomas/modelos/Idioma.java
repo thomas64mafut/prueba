@@ -2,16 +2,33 @@ package idiomas.modelos;
 
 import java.util.Objects;
 
+/**
+ *
+ * @author Thomas Mafut & Luis Medina Raed
+ */
 public class Idioma {
+    // Variables de instancia
     private String nombre;
-
+    // Relacion entre clases
+    // Constructor
+    public Idioma(String nombre) {
+        this.nombre = nombre;
+    }
+    // Metodos
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    public void mostrarIdioma(){
+        System.out.println(this.nombre);
+    }
+    // equals() & hashCode()
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 53 * hash + Objects.hashCode(this.nombre);
         return hash;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -29,28 +46,11 @@ public class Idioma {
         }
         return true;
     }
-    
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
-
-    public void mostrarIdioma(){
-        System.out.println(this.nombre);
-    }
-
-    public Idioma(String nombre) {
-        this.nombre = nombre;
-    }
-
+    // Getters & Setters
     public String verNombre() {
         return nombre;
     }
-
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-
-
 }

@@ -4,25 +4,28 @@ import autores.modelos.Autor;
 import autores.modelos.Profesor;
 import java.util.Objects;
 
+/**
+ *
+ * @author Thomas Mafut & Luis Medina Raed
+ */
 public class MiembroEnGrupo {
-    private Autor autor;
-    private Grupo grupo;
-    private Rol rol;
-
-
-    public MiembroEnGrupo(Autor autor, Rol rol, Grupo grupo) {
-        this.autor = autor;
-        this.grupo = grupo;
-        this.rol = rol;
+    // Relacion entre clases
+    private Autor unAutor;
+    private Grupo unGrupo;
+    private Rol unRol;
+    // Constructor
+    public MiembroEnGrupo(Autor unAutor, Rol unRol, Grupo unGrupo) {
+        this.unAutor = unAutor;
+        this.unGrupo = unGrupo;
+        this.unRol = unRol;
     }
-
+    // equals() & hashCode()
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.autor);
+        hash = 47 * hash + Objects.hashCode(this.unAutor);
         return hash;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -35,34 +38,33 @@ public class MiembroEnGrupo {
             return false;
         }
         final MiembroEnGrupo other = (MiembroEnGrupo) obj;
-        if (!Objects.equals(this.autor, other.autor)) {
+        if (!Objects.equals(this.unAutor, other.unAutor)) {
             return false;
         }
         return true;
     }
-
-    
+    // Getters & Setters
     public Autor verAutor() {
-        return autor;
+        return unAutor;
     }
 
-    public void asignarAutor(Autor autor) {
-        this.autor = autor;
+    public void asignarAutor(Autor unAutor) {
+        this.unAutor = unAutor;
     }
 
     public Rol verRol() {
-        return rol;
+        return unRol;
     }
 
-    public void asignarRol(Rol rol) {
-        this.rol = rol;
+    public void asignarRol(Rol unRol) {
+        this.unRol = unRol;
     }
 
     public Grupo verGrupo() {
-        return grupo;
+        return unGrupo;
     }
 
-    public void asignarGrupo(Grupo grupo) {
-        this.grupo = grupo;
+    public void asignarGrupo(Grupo unGrupo) {
+        this.unGrupo = unGrupo;
     }
 }

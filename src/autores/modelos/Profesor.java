@@ -1,28 +1,33 @@
 package autores.modelos;
 
 import grupos.modelos.MiembroEnGrupo;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ *
+ * @author Thomas Mafut & Luis Medina Raed
+ */
 public class Profesor extends Autor {
-    private Cargo cargo;
+   // Relacion entre clases
+    private Cargo unCargo;
 
+    // Constructor
+    public Profesor(int dni, String apellidos, String nombres, String clave, Cargo unCargo){
+        super(dni, apellidos, nombres, clave);
+        this.unCargo = unCargo;
+    }
+    // Metodos
+    @Override
     public void mostrar() {
         System.out.println("[" + super.verDni() + "] " + super.verApellidos() + ", " + super.verNombres());
-        System.out.println("Cargo: " + cargo.toString());
+        System.out.println("Cargo: " + unCargo.toString());
     }
-
-    public Profesor(int dni, String apellidos, String nombres, String clave, Cargo cargo) {
-        super(dni, apellidos, nombres, clave);
-        this.cargo = cargo;
-    }
-
+    // Getters & Setters
     public Cargo verCargo() {
-        return cargo;
+        return unCargo;
     }
-
     public void asignarCargo(Cargo cargo) {
-        this.cargo = cargo;
+        this.unCargo = cargo;
     }
 }

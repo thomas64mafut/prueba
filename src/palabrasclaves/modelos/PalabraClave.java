@@ -2,9 +2,26 @@ package palabrasclaves.modelos;
 
 import java.util.Objects;
 
+/**
+ *
+ * @author Thomas Mafut & Luis Medina Raed
+ */
 public class PalabraClave {
+    // Variables de instancia
     private String nombre;
+    // Constructor
+    public PalabraClave(String nombre) {
+        this.nombre = nombre;
+    }
+    // Metodos
+    public void mostrarPalabraClave(){
+        System.out.println(this.nombre);
+    }
 
+    public String toString() {
+        return nombre;
+    }
+    // equals() & hashCode()
     @Override
     public int hashCode() {
         int hash = 5;
@@ -29,25 +46,12 @@ public class PalabraClave {
         }
         return true;
     }
-    
-
-    public PalabraClave(String nombre) {
-        this.nombre = nombre;
-    }
-
+    // Getters & Setters
     public String verNombre() {
         return nombre;
     }
 
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void mostrarPalabraClave(){
-        System.out.println(this.nombre);
-    }
-
-    public String toString() {
-        return nombre;
     }
 }

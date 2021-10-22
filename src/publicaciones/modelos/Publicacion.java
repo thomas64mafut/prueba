@@ -10,17 +10,53 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ *
+ * @author Thomas Mafut & Luis Medina Raed
+ */
 public class Publicacion {
+    // Variables de instancia
     private String titulo;
-    private MiembroEnGrupo autor;
     private LocalDate fechaPublicacion;
-    private Tipo tipoPublicacion;
-    private Idioma idiomaPublicacion;
-    private Lugar lugarPublicacion;
-    private ArrayList<PalabraClave> palabrasClaves;
     private String enlace;
     private String resumen;
-
+    // Relacion entre clases
+    private Tipo unTipo;
+    private Idioma unIdioma;
+    private Lugar unLugar;
+    private ArrayList<PalabraClave> palabrasClaves;
+    private MiembroEnGrupo unMiembroEnGrupo;
+    
+    // Constructor
+    public Publicacion(String titulo, MiembroEnGrupo unMiembroEnGrupo, LocalDate fechaPublicacion, Tipo unTipo, Idioma unIdioma, Lugar unLugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
+        this.titulo = titulo;
+        this.unMiembroEnGrupo = unMiembroEnGrupo;
+        this.fechaPublicacion = fechaPublicacion;
+        this.unTipo = unTipo;
+        this.unIdioma = unIdioma;
+        this.unLugar = unLugar;
+        this.palabrasClaves = palabrasClaves;
+        this.enlace = enlace;
+        this.resumen = resumen;
+    }
+    // Metodos
+    public void mostrar(){
+        System.out.println("Titulo: " + this.titulo);
+        System.out.println("Autor: " + this.unMiembroEnGrupo.verAutor().verApellidos() + ", " + this.unMiembroEnGrupo.verAutor().verNombres());
+        System.out.println("Grupo: " + this.unMiembroEnGrupo.verGrupo().verNombre());
+        System.out.println("Fecha de Publicacion: " + this.fechaPublicacion);
+        System.out.println("Tipo: " + this.unTipo);
+        System.out.println("Idioma: " + this.unIdioma);
+        System.out.println("Lugar: " + this.unLugar);
+        System.out.println("Palabras Claves");
+        System.out.println("---------------");
+        for (PalabraClave palabraClave : palabrasClaves){
+            System.out.println("\t" + palabraClave);
+        }
+        System.out.println("Enlace: " + this.enlace);
+        System.out.println("Resumen: " + this.resumen);
+    }
+    // equals() & hashCode()
     @Override
     public int hashCode() {
         int hash = 5;
@@ -45,34 +81,37 @@ public class Publicacion {
         }
         return true;
     }
+    // Getters & Setters
 
-
-    public Publicacion(String titulo, MiembroEnGrupo autor, LocalDate fechaPublicacion, Tipo tipoPublicacion, Idioma idiomaPublicacion, Lugar lugarPublicacion, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.fechaPublicacion = fechaPublicacion;
-        this.tipoPublicacion = tipoPublicacion;
-        this.idiomaPublicacion = idiomaPublicacion;
-        this.lugarPublicacion = lugarPublicacion;
-        this.palabrasClaves = palabrasClaves;
-        this.enlace = enlace;
-        this.resumen = resumen;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void mostrar(){
-        System.out.println("Titulo: " + this.titulo);
-        System.out.println("Autor: " + this.autor.verAutor().verApellidos() + ", " + this.autor.verAutor().verNombres());
-        System.out.println("Grupo: " + this.autor.verGrupo().verNombre());
-        System.out.println("Fecha de Publicacion: " + this.fechaPublicacion);
-        System.out.println("Tipo: " + this.tipoPublicacion);
-        System.out.println("Idioma: " + this.idiomaPublicacion);
-        System.out.println("Lugar: " + this.lugarPublicacion);
-        System.out.println("Palabras Claves");
-        System.out.println("---------------");
-        for (PalabraClave palabraClave : palabrasClaves){
-            System.out.println("\t" + palabraClave);
-        }
-        System.out.println("Enlace: " + this.enlace);
-        System.out.println("Resumen: " + this.resumen);
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public LocalDate getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public String getEnlace() {
+        return enlace;
+    }
+
+    public void setEnlace(String enlace) {
+        this.enlace = enlace;
+    }
+
+    public String getResumen() {
+        return resumen;
+    }
+
+    public void setResumen(String resumen) {
+        this.resumen = resumen;
     }
 }

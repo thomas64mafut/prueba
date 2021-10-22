@@ -78,7 +78,6 @@ public class VentanaAMProfesor extends JDialog {
 
         jLabel6.setText("Clave:");
 
-        comboCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         comboCargos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCargosActionPerformed(evt);
