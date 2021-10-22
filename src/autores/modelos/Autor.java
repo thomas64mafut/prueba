@@ -15,7 +15,7 @@ public abstract class Autor {
     private String nombres;
     private String clave;
     // Relacion entre clases
-    private ArrayList <MiembroEnGrupo> unMiembroEnGrupos;
+    private ArrayList <MiembroEnGrupo> miembrosGrupo;
     // Constructor
     public Autor(int dni, String apellidos, String nombres, String clave) {
         this.dni = dni;
