@@ -29,26 +29,25 @@ public abstract class Autor {
     }
     // Metodos
     public void mostrar(){
-        System.out.println("[" + dni + "] " + apellidos + ", " + nombres);
-    }
-
-    public void verGrupos(){
         System.out.println("- Grupos de " + this.nombres +", " + this.apellidos + ".");
         if(this.tieneGrupos()){
-            for (MiembroEnGrupo unGrupo : miembros) {
+            for (MiembroEnGrupo unGrupo : this.miembros) {
                 System.out.println("\t" + "Grupo: " + unGrupo.verGrupo().verNombre() + ", Rol: " + unGrupo.verRol().toString() + ".\n");//atencion por si falta super y this
             }
         } else {
             System.out.println("\tEste autor no pertenece a ningun grupo.");
         }
     }
+    public ArrayList <MiembroEnGrupo> verGrupos(){
+        return miembros;
+    }
 
     public void agregarGrupo (Grupo grupo, Rol rol){
-        MiembroEnGrupo unGrupo = new MiembroEnGrupo(this, rol, grupo);
-        if(!tieneGrupos() && miembros == null){
+        MiembroEnGrupo unGrupo = new MiembroEnGrupo(this, grupo, rol);
+        if(tieneGrupos() == false && miembros == null){
             this.miembros = new ArrayList<>();
         }
-        if (grupo.esSuperAdministradores()){
+        if (!grupo.esSuperAdministradores()){
             if(!this.miembros.contains(unGrupo)){
                 unGrupo.asignarRol(Rol.ADMINISTRADOR);
                 this.miembros.add(unGrupo);
@@ -76,6 +75,7 @@ public abstract class Autor {
         }
             return false;
     }
+
     public boolean tieneGrupos(){
         if (this.miembros == null)
             return false;

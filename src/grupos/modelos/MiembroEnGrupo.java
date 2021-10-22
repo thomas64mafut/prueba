@@ -14,11 +14,12 @@ public class MiembroEnGrupo {
     private Grupo unGrupo;
     private Rol unRol;
     // Constructor
-    public MiembroEnGrupo(Autor unAutor, Rol unRol, Grupo unGrupo) {
+    public MiembroEnGrupo(Autor unAutor, Grupo unGrupo, Rol unRol) {
         this.unAutor = unAutor;
         this.unGrupo = unGrupo;
         this.unRol = unRol;
     }
+
     // equals() & hashCode()
     @Override
     public int hashCode() {

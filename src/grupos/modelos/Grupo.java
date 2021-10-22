@@ -22,18 +22,17 @@ public class Grupo {
     }
     // Metodos
     public void mostrar(){
-        System.out.println("Nombre: "+ nombre);
-        System.out.println("Descripcion: "+ descripcion);
-    }
-
-    public void verMiembros(){
         for(MiembroEnGrupo unMiembroEnGrupo : miembros){
-            System.out.println("\t" + unMiembroEnGrupo.toString());//atencion por si falta super y this
+//            System.out.println("\t" + unMiembroEnGrupo.toString());//atencion por si falta super y this
+            System.out.println("Grupo: "+ unMiembroEnGrupo.verGrupo().nombre + " - " + unMiembroEnGrupo.verAutor().verNombres()+ ", "+ unMiembroEnGrupo.verAutor().verApellidos() + " Rol: "+ unMiembroEnGrupo.verRol());
         }
     }
+    public ArrayList <MiembroEnGrupo> verMiembros(){
+        return miembros;
+    }
     public void agregarMiembro (Autor autor, Rol rol){
-        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, rol, this);
-        if(!tieneMiembros() && miembros == null){
+        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, this, rol);
+        if(tieneMiembros() == false && miembros == null){
             miembros = new ArrayList<>();
         }
         if (this.esSuperAdministradores()){
@@ -50,6 +49,9 @@ public class Grupo {
     }
     public void quitarMiembro(Autor miembro){
         for (MiembroEnGrupo unMiembroEnGrupo : miembros){
+            if (this.miembros == null){
+                System.out.println("Este Grupo ya esta Vacio");
+            }
             if (this.equals(unMiembroEnGrupo.verAutor())){
                 miembros.remove(miembro);
                 miembro.quitarGrupo(this);
@@ -63,7 +65,11 @@ public class Grupo {
         else
             return false;
     }
+
     public boolean tieneMiembros(){
+        if (this.miembros == null) {
+            return false;
+        }
         if (this.miembros.isEmpty()){
             return false;
         }
