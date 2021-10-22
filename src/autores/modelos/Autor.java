@@ -1,6 +1,10 @@
 package autores.modelos;
 
+import grupos.modelos.Grupo;
 import grupos.modelos.MiembroEnGrupo;
+import grupos.modelos.Rol;
+
+import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -15,7 +19,7 @@ public abstract class Autor {
     private String nombres;
     private String clave;
     // Relacion entre clases
-    private ArrayList <MiembroEnGrupo> miembrosGrupo;
+    private ArrayList <MiembroEnGrupo> miembros;
     // Constructor
     public Autor(int dni, String apellidos, String nombres, String clave) {
         this.dni = dni;
@@ -27,6 +31,60 @@ public abstract class Autor {
     public void mostrar(){
         System.out.println("[" + dni + "] " + apellidos + ", " + nombres);
     }
+
+    public void verGrupos(){
+        System.out.println("- Grupos de " + this.nombres +", " + this.apellidos + ".");
+        if(this.tieneGrupos()){
+            for (MiembroEnGrupo unGrupo : miembros) {
+                System.out.println("\t" + "Grupo: " + unGrupo.verGrupo().verNombre() + ", Rol: " + unGrupo.verRol().toString() + ".\n");//atencion por si falta super y this
+            }
+        } else {
+            System.out.println("\tEste autor no pertenece a ningun grupo.");
+        }
+    }
+
+    public void agregarGrupo (Grupo grupo, Rol rol){
+        MiembroEnGrupo unGrupo = new MiembroEnGrupo(this, rol, grupo);
+        if(!tieneGrupos() && miembros == null){
+            this.miembros = new ArrayList<>();
+        }
+        if (grupo.esSuperAdministradores()){
+            if(!this.miembros.contains(unGrupo)){
+                unGrupo.asignarRol(Rol.ADMINISTRADOR);
+                this.miembros.add(unGrupo);
+                grupo.agregarMiembro(this, Rol.ADMINISTRADOR);
+            }
+        } else if (!this.miembros.contains(unGrupo)){
+            this.miembros.add(unGrupo);
+            grupo.agregarMiembro(this, rol);
+        }
+
+    }
+    public void quitarGrupo(Grupo grupo){
+        for (MiembroEnGrupo unGrupo : miembros){
+            if (this.equals(unGrupo.verAutor())){
+                miembros.remove(unGrupo);
+                grupo.quitarMiembro(this);
+            }
+        }
+    }
+    public boolean esSuperAdministrador(){
+        for (MiembroEnGrupo unGrupo : miembros){
+            if (unGrupo.verGrupo().esSuperAdministradores()){
+                return true;
+            }
+        }
+            return false;
+    }
+    public boolean tieneGrupos(){
+        if (this.miembros == null)
+            return false;
+        else if (this.miembros.isEmpty())
+            return false;
+        else
+            return true;
+    }
+
     // equals() & hashCode()
     @Override
     public int hashCode() {

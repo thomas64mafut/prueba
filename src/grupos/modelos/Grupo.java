@@ -14,7 +14,7 @@ public class Grupo {
     private String nombre;
     private String descripcion;
     // Relacion entre clases
-    private ArrayList<MiembroEnGrupo> miembrosGrupo;
+    private ArrayList<MiembroEnGrupo> miembros;
     // Constructor
     public Grupo(String nombre, String descripcion) {
         this.nombre = nombre;
@@ -27,32 +27,32 @@ public class Grupo {
     }
 
     public void verMiembros(){
-        for(MiembroEnGrupo unMiembroEnGrupo : miembrosGrupo){
+        for(MiembroEnGrupo unMiembroEnGrupo : miembros){
             System.out.println("\t" + unMiembroEnGrupo.toString());//atencion por si falta super y this
         }
     }
-    public void agregarMiembro (Autor unAutor, Rol unRol){
-        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(unAutor, unRol, this);
-        if(!tieneMiembros() && miembrosGrupo == null){
-            miembrosGrupo = new ArrayList<>();
+    public void agregarMiembro (Autor autor, Rol rol){
+        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, rol, this);
+        if(!tieneMiembros() && miembros == null){
+            miembros = new ArrayList<>();
         }
         if (this.esSuperAdministradores()){
-            if(!this.miembrosGrupo.contains(unMiembroEnGrupo)){
+            if(!this.miembros.contains(unMiembroEnGrupo)){
                 unMiembroEnGrupo.asignarRol(Rol.ADMINISTRADOR);
-                this.miembrosGrupo.add(unMiembroEnGrupo);
-                //metodo AGREGARGRUPO
+                this.miembros.add(unMiembroEnGrupo);
+                autor.agregarGrupo(this,Rol.ADMINISTRADOR);
             }
-        } else if (!this.miembrosGrupo.contains(unMiembroEnGrupo)){
-            this.miembrosGrupo.add(unMiembroEnGrupo);
-            //metodo AGREGARGRUPO
+        } else if (!this.miembros.contains(unMiembroEnGrupo)){
+            this.miembros.add(unMiembroEnGrupo);
+            autor.agregarGrupo(this,rol);
         }
 
     }
     public void quitarMiembro(Autor miembro){
-        for (MiembroEnGrupo unMiembroEnGrupo : miembrosGrupo){
+        for (MiembroEnGrupo unMiembroEnGrupo : miembros){
             if (this.equals(unMiembroEnGrupo.verAutor())){
-                miembrosGrupo.remove(miembro);
-                //Agregar GRUPO
+                miembros.remove(miembro);
+                miembro.quitarGrupo(this);
             }
         }
     }
@@ -64,7 +64,7 @@ public class Grupo {
             return false;
     }
     public boolean tieneMiembros(){
-        if (this.miembrosGrupo.isEmpty()){
+        if (this.miembros.isEmpty()){
             return false;
         }
         else
