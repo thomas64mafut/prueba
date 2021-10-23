@@ -28,37 +28,58 @@ public abstract class Autor {
         this.clave = clave;
     }
     // Metodos
+    /**
+        Este metodo permite mostrar Autor
+    */
     public void mostrar(){
-        System.out.println("- Grupos de " + this.nombres +", " + this.apellidos + ".");
+        System.out.println("------------------------------");
+        System.out.println("Nombre y apellido: " + this.nombres +", " + this.apellidos + ".");
+        System.out.println("DNI: "+ dni);
+        System.out.println("Clave: "+ clave);
+        System.out.println("Pertenece a los siguientes grupos: ");
         if(this.tieneGrupos()){
-            for (MiembroEnGrupo unGrupo : this.miembros) {
-                System.out.println("\t" + "Grupo: " + unGrupo.verGrupo().verNombre() + ", Rol: " + unGrupo.verRol().toString() + ".\n");//atencion por si falta super y this
+            for(MiembroEnGrupo unGrupo : this.miembros){
+                System.out.println(unGrupo.verGrupo().verNombre() + "\nSu Rol es: " + unGrupo.verRol().toString() + ".");
             }
         } else {
-            System.out.println("\tEste autor no pertenece a ningun grupo.");
+            System.out.println("Este autor no pertenece a ningun grupo.");
         }
     }
+
     public ArrayList <MiembroEnGrupo> verGrupos(){
         return miembros;
     }
 
+    public void asignarGrupos(ArrayList<MiembroEnGrupo> grupos) {
+        this.miembros = grupos;
+    }
+    
+    /**
+        Este metodo nos permite agregar autores a grupos
+    */
     public void agregarGrupo (Grupo grupo, Rol rol){
         MiembroEnGrupo unGrupo = new MiembroEnGrupo(this, grupo, rol);
-        if(tieneGrupos() == false && miembros == null){
+        if(!tieneGrupos() && this.miembros == null){
             this.miembros = new ArrayList<>();
         }
-        if (!grupo.esSuperAdministradores()){
+        if (grupo.esSuperAdministradores()){
             if(!this.miembros.contains(unGrupo)){
                 unGrupo.asignarRol(Rol.ADMINISTRADOR);
                 this.miembros.add(unGrupo);
                 grupo.agregarMiembro(this, Rol.ADMINISTRADOR);
             }
-        } else if (!this.miembros.contains(unGrupo)){
+        } else
+        {
+            if(!this.miembros.contains(unGrupo)){
             this.miembros.add(unGrupo);
             grupo.agregarMiembro(this, rol);
         }
-
     }
+    }
+    
+    /**
+        Este metodo nos permite quitar autores de grupos
+    */
     public void quitarGrupo(Grupo grupo){
         for (MiembroEnGrupo unGrupo : miembros){
             if (this.equals(unGrupo.verAutor())){
@@ -67,6 +88,9 @@ public abstract class Autor {
             }
         }
     }
+    /**
+        Este metodo nos permite saber si un autor es superadministrador
+    */
     public boolean esSuperAdministrador(){
         for (MiembroEnGrupo unGrupo : miembros){
             if (unGrupo.verGrupo().esSuperAdministradores()){
@@ -76,6 +100,9 @@ public abstract class Autor {
             return false;
     }
 
+    /**
+        Este metodo nos permite saber si un autor tiene grupos
+    */
     public boolean tieneGrupos(){
         if (this.miembros == null)
             return false;

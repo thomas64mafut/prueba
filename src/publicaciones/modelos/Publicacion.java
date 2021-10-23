@@ -41,6 +41,7 @@ public class Publicacion {
     }
     // Metodos
     public void mostrar(){
+        System.out.println("------------------------------");
         System.out.println("Titulo: " + this.titulo);
         System.out.println("Autor: " + this.unMiembroEnGrupo.verAutor().verApellidos() + ", " + this.unMiembroEnGrupo.verAutor().verNombres());
         System.out.println("Grupo: " + this.unMiembroEnGrupo.verGrupo().verNombre());
@@ -48,11 +49,12 @@ public class Publicacion {
         System.out.println("Tipo: " + this.unTipo);
         System.out.println("Idioma: " + this.unIdioma);
         System.out.println("Lugar: " + this.unLugar);
-        System.out.println("Palabras Claves");
-        System.out.println("---------------");
+        System.out.println("");
+        System.out.println("Sus palabras claves son: ");
         for (PalabraClave palabraClave : palabrasClaves){
-            System.out.println("\t" + palabraClave);
+            System.out.println(palabraClave);
         }
+        System.out.println("");
         System.out.println("Enlace: " + this.enlace);
         System.out.println("Resumen: " + this.resumen);
     }

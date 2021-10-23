@@ -18,11 +18,14 @@ public class Profesor extends Autor {
         this.unCargo = unCargo;
     }
     // Metodos
-//    @Override
-//    public void mostrar() {
-//        System.out.println("[" + super.verDni() + "] " + super.verApellidos() + ", " + super.verNombres());
-//        System.out.println("Cargo: " + unCargo.toString());
-//    }
+    /**
+        Este metodo permite mostrar profesor
+    */
+    @Override
+    public void mostrar(){
+        super.mostrar();
+        System.out.println("Cargo: " + this.unCargo);
+    }
     // Getters & Setters
     public Cargo verCargo() {
         return unCargo;

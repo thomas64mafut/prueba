@@ -21,12 +21,34 @@ public class Grupo {
         this.descripcion = descripcion;
     }
     // Metodos
-    public void mostrar(){
-        for(MiembroEnGrupo unMiembroEnGrupo : miembros){
-//            System.out.println("\t" + unMiembroEnGrupo.toString());//atencion por si falta super y this
-            System.out.println("Grupo: "+ unMiembroEnGrupo.verGrupo().nombre + " - " + unMiembroEnGrupo.verAutor().verNombres()+ ", "+ unMiembroEnGrupo.verAutor().verApellidos() + " Rol: "+ unMiembroEnGrupo.verRol());
+        public boolean tieneMiembros(){
+        if (this.miembros == null) {
+            return false;
         }
+        if (this.miembros.isEmpty()){
+            return false;
+        }
+        else
+            return true;
     }
+    /**
+        Este metodo nos permite mostrar un grupo
+    */  
+    public void mostrar(){
+        System.out.println("------------------------------");
+        System.out.println("Nombre: "+ nombre);
+        System.out.println("Descripcion: "+ descripcion);
+        System.out.println("Los miembros del grupo son: ");
+        if(tieneMiembros()){
+            for(MiembroEnGrupo unMiembroEnGrupo : miembros){
+            System.out.println(unMiembroEnGrupo.verAutor().verNombres()+ ", "+ unMiembroEnGrupo.verAutor().verApellidos() + " Rol: "+ unMiembroEnGrupo.verRol());
+        }
+        }
+            else
+            {
+                System.out.println("El grupo no tiene miembros.");       
+            }
+        }
     public ArrayList <MiembroEnGrupo> verMiembros(){
         return miembros;
     }
@@ -48,15 +70,23 @@ public class Grupo {
 
     }
     public void quitarMiembro(Autor miembro){
-        for (MiembroEnGrupo unMiembroEnGrupo : miembros){
-            if (this.miembros == null){
-                System.out.println("Este Grupo ya esta Vacio");
+        ArrayList<MiembroEnGrupo> borraMiembro= new ArrayList<>();
+        ArrayList<MiembroEnGrupo> borraGrupo = new ArrayList<>();
+
+        if(tieneMiembros()){
+            for(MiembroEnGrupo i: this.miembros){
+                 if(!i.verAutor().equals(miembro)){
+                     borraMiembro.add(i);
+                 }
             }
-            if (this.equals(unMiembroEnGrupo.verAutor())){
-                miembros.remove(miembro);
-                miembro.quitarGrupo(this);
+             for(MiembroEnGrupo g: miembro.verGrupos()){
+                if(!g.verGrupo().equals(this)){
+                    borraGrupo.add(g);
+                }
             }
         }
+        miembro.asignarGrupos(borraGrupo);
+        this.miembros = borraMiembro;
     }
     public boolean esSuperAdministradores(){
         if(this.nombre.equals("Super Administradores")){
@@ -64,17 +94,6 @@ public class Grupo {
         }
         else
             return false;
-    }
-
-    public boolean tieneMiembros(){
-        if (this.miembros == null) {
-            return false;
-        }
-        if (this.miembros.isEmpty()){
-            return false;
-        }
-        else
-            return true;
     }
 
     // equals() & hashCode()

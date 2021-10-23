@@ -15,11 +15,14 @@ public class Alumno extends Autor {
         this.cx = cx;
     }
     // Metodos
-//    @Override
-//    public void mostrar() {
-//        System.out.println("[" + super.verDni() + "] " + super.verApellidos() + ", " + super.verNombres());
-//        System.out.println("CX: " + cx);
-//    }
+    /**
+        Este metodo permite mostrar Alumno
+    */
+    @Override
+    public void mostrar(){
+        super.mostrar();
+        System.out.println("CX: " + this.cx);
+    }
     // equals() & hashCode()
     @Override
     public int hashCode() {

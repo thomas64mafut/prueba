@@ -120,7 +120,7 @@ public class ControladorPrincipal {
         
 //        for(Autor a : autores)
 //            a.mostrar();
-//
+
         /*Main parte 3*/
         /*Luego de crear grupos y autores, tomar 1 grupo y agregarle 2 autores 
         como miembros. Mostrar el grupo verificando que tenga los miembros 
@@ -203,7 +203,7 @@ public class ControladorPrincipal {
         
 //        for(Tipo t : tipos)
 //            System.out.println(t);
-//
+
         Lugar lugar1 = new Lugar("Lugar 1");
         Lugar lugar2 = new Lugar("Lugar 2");
         Lugar lugar3 = new Lugar("Lugar 3");
@@ -249,7 +249,7 @@ public class ControladorPrincipal {
         
 //        for(Idioma i : idiomas)
 //            System.out.println(i);
-//
+
         PalabraClave palabraClave1 = new PalabraClave("PalabraClave1");
         PalabraClave palabraClave2 = new PalabraClave("PalabraClave2");
         PalabraClave palabraClave3 = new PalabraClave("PalabraClave3");
@@ -296,7 +296,7 @@ public class ControladorPrincipal {
 //        for(Publicacion p : publicaciones) {
 //            p.mostrar();
 //            System.out.println();
-//        }
+        }
 
       //</editor-fold>   
         
@@ -333,4 +333,3 @@ public class ControladorPrincipal {
 //
 //     //</editor-fold>
     }
-}
