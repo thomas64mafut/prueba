@@ -14,7 +14,7 @@ public class Grupo {
     private String nombre;
     private String descripcion;
     // Relacion entre clases
-    private ArrayList<MiembroEnGrupo> miembros;
+    private ArrayList<MiembroEnGrupo> miembros = new ArrayList<>();
     // Constructor
     public Grupo(String nombre, String descripcion) {
         this.nombre = nombre;
@@ -52,23 +52,37 @@ public class Grupo {
     public ArrayList <MiembroEnGrupo> verMiembros(){
         return miembros;
     }
-    public void agregarMiembro (Autor autor, Rol rol){
-        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, this, rol);
-        if(tieneMiembros() == false && miembros == null){
-            miembros = new ArrayList<>();
-        }
-        if (this.esSuperAdministradores()){
-            if(!this.miembros.contains(unMiembroEnGrupo)){
-                unMiembroEnGrupo.asignarRol(Rol.ADMINISTRADOR);
-                this.miembros.add(unMiembroEnGrupo);
-                autor.agregarGrupo(this,Rol.ADMINISTRADOR);
-            }
-        } else if (!this.miembros.contains(unMiembroEnGrupo)){
-            this.miembros.add(unMiembroEnGrupo);
-            autor.agregarGrupo(this,rol);
+
+//    public void agregarMiembro (Autor autor, Rol rol){
+//        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, this, rol);
+//        if(this.tieneMiembros() == false || miembros == null){
+//            miembros = new ArrayList<>();
+//        }
+//        if (this.esSuperAdministradores()){
+//            if(!this.miembros.contains(unMiembroEnGrupo)){
+//                unMiembroEnGrupo.asignarRol(Rol.ADMINISTRADOR);
+//                this.miembros.add(unMiembroEnGrupo);
+//                autor.agregarGrupo(this,Rol.ADMINISTRADOR);
+//            }
+//        } else if (!this.miembros.contains(unMiembroEnGrupo)){
+//            this.miembros.add(unMiembroEnGrupo);
+//            autor.agregarGrupo(this,rol);
+//        }
+//    }
+    public void agregarMiembro(Autor autor, Rol rol) {
+
+        MiembroEnGrupo miembro = new MiembroEnGrupo(autor, this, rol);
+
+        if(this.esSuperAdministradores()){
+            miembro.asignarRol(Rol.ADMINISTRADOR);
         }
 
+        if(!this.miembros.contains(miembro)){
+            this.miembros.add(miembro);
+            autor.agregarGrupo(this, rol);
+        }
     }
+
     public void quitarMiembro(Autor miembro){
         ArrayList<MiembroEnGrupo> borraMiembro= new ArrayList<>();
         ArrayList<MiembroEnGrupo> borraGrupo = new ArrayList<>();
