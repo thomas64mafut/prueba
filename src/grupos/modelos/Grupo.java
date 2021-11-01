@@ -55,7 +55,7 @@ public class Grupo {
 
 //    public void agregarMiembro (Autor autor, Rol rol){
 //        MiembroEnGrupo unMiembroEnGrupo = new MiembroEnGrupo(autor, this, rol);
-//        if(this.tieneMiembros() == false || miembros == null){
+//        if(this.tieneMiembros() == false){
 //            miembros = new ArrayList<>();
 //        }
 //        if (this.esSuperAdministradores()){
@@ -84,24 +84,17 @@ public class Grupo {
     }
 
     public void quitarMiembro(Autor miembro){
-        ArrayList<MiembroEnGrupo> borraMiembro= new ArrayList<>();
-        ArrayList<MiembroEnGrupo> borraGrupo = new ArrayList<>();
 
         if(tieneMiembros()){
             for(MiembroEnGrupo i: this.miembros){
-                 if(!i.verAutor().equals(miembro)){
-                     borraMiembro.add(i);
+                 if(i.verAutor().equals(miembro)){
+                     miembros.remove(i);
+                     miembro.quitarGrupo(this);
                  }
             }
-             for(MiembroEnGrupo g: miembro.verGrupos()){
-                if(!g.verGrupo().equals(this)){
-                    borraGrupo.add(g);
-                }
-            }
         }
-        miembro.asignarGrupos(borraGrupo);
-        this.miembros = borraMiembro;
     }
+
     public boolean esSuperAdministradores(){
         if(this.nombre.equals("Super Administradores")){
             return true;
